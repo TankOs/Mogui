@@ -16,3 +16,11 @@ target_link_libraries(
 	mogui-test
 	mogui
 )
+
+add_custom_command(
+	TARGET mogui-test
+	POST_BUILD
+	WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
+	COMMAND mogui-test
+	COMMENT "Running unit tests..."
+)

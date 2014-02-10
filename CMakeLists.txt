@@ -3,7 +3,7 @@ project( mogui )
 
 enable_testing()
 
-set( CMAKE_CXX_FLAGS "-Wall -Wextra -Wshadow -Wconversion -pedantic ${CMAKE_CXX_FLAGS}" )
+set( CMAKE_CXX_FLAGS "-std=c++11 -Wall -Wextra -Wshadow -Wconversion -pedantic ${CMAKE_CXX_FLAGS}" )
 
 add_subdirectory( lib )
 add_subdirectory( test )

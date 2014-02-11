@@ -1,13 +1,14 @@
 cmake_minimum_required( VERSION 2.8 )
 project( mogui-test )
 
-set( SRC_DIR ${PROJECT_SOURCE_DIR}/src )
+set( SRC_PATH ${PROJECT_SOURCE_DIR}/src )
 
 set(
 	SOURCES
-	${SRC_DIR}/config.cpp
-	${SRC_DIR}/rectangle.cpp
-	${SRC_DIR}/vector2.cpp
+	${SRC_PATH}/config.cpp
+	${SRC_PATH}/rectangle.cpp
+	${SRC_PATH}/vector2.cpp
+	${SRC_PATH}/element.cpp
 )
 
 include_directories( ${PROJECT_SOURCE_DIR}/../lib/include )

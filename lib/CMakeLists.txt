@@ -1,15 +1,17 @@
 cmake_minimum_required( VERSION 2.8 )
 project( mogui-lib )
 
-set( SRC_DIR ${PROJECT_SOURCE_DIR}/src )
-set( INC_DIR ${PROJECT_SOURCE_DIR}/include )
+set( SRC_PATH ${PROJECT_SOURCE_DIR}/src )
+set( INC_PATH ${PROJECT_SOURCE_DIR}/include )
 
 set(
 	SOURCES
-	${INC_DIR}/mogui/config.hpp
-	${SRC_DIR}/mogui/config.cpp
+	${INC_PATH}/mogui/config.hpp
+	${INC_PATH}/mogui/element.hpp
+	${SRC_PATH}/mogui/config.cpp
+	${SRC_PATH}/mogui/element.cpp
 )
 
-include_directories( ${INC_DIR} )
+include_directories( ${INC_PATH} )
 
 add_library( mogui SHARED ${SOURCES} )

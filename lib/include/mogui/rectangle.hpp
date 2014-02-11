@@ -1,5 +1,7 @@
 #pragma once
 
+#include <initializer_list>
+
 namespace mog {
 
 template <class T>
@@ -7,6 +9,7 @@ class Rectangle {
 	public:
 		Rectangle();
 		Rectangle( T x_, T y_, T width_, T height_ );
+		Rectangle( std::initializer_list<T> list );
 
 		T x;
 		T y;
@@ -17,6 +20,18 @@ class Rectangle {
 };
 
 }
+
+template <class T>
+bool operator==(
+	const mog::Rectangle<T>& left,
+	const mog::Rectangle<T>& right
+);
+
+template <class T>
+bool operator!=(
+	const mog::Rectangle<T>& left,
+	const mog::Rectangle<T>& right
+);
 
 /** @cls mog::Rectangle
  * Simple rectangle data type.

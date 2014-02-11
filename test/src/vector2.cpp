@@ -21,7 +21,7 @@ SCENARIO( "Vector2 can be constructed", "[mog::Vector2]" ) {
 	}
 }
 
-SCENARIO( "Vector2s can be used for algebra", "[mog::Vector2]" ) {
+SCENARIO( "Vector2 can be used for algebra", "[mog::Vector2]" ) {
 	GIVEN( "two Vector2<float>s" ) {
 		mog::Vector2<float> v0( 1.0f, 2.0f );
 		mog::Vector2<float> v1( 3.0f, 4.0f );

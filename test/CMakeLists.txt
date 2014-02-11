@@ -6,6 +6,7 @@ set( SRC_DIR ${PROJECT_SOURCE_DIR}/src )
 set(
 	SOURCES
 	${SRC_DIR}/config.cpp
+	${SRC_DIR}/rectangle.cpp
 	${SRC_DIR}/vector2.cpp
 )
 

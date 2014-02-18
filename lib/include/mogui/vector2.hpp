@@ -8,12 +8,17 @@ template <class T>
 class Vector2 {
 	public:
 		Vector2();
-		Vector2( T x_, T y_ );
+		Vector2( T x, T y );
 
-		T x;
-		T y;
+		T x() const;
+		T y() const;
+
+		void x( T value );
+		void y( T value );
 
 	private:
+		T _x;
+		T _y;
 };
 
 typedef Vector2<float> Vector2f;
@@ -46,6 +51,18 @@ mog::Vector2<T> operator-(
 template <class T>
 mog::Vector2<T>& operator-=(
 	mog::Vector2<T>& left,
+	const mog::Vector2<T>& right
+);
+
+template <class T>
+bool operator==(
+	const mog::Vector2<T>& left,
+	const mog::Vector2<T>& right
+);
+
+template <class T>
+bool operator!=(
+	const mog::Vector2<T>& left,
 	const mog::Vector2<T>& right
 );
 

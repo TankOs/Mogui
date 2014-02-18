@@ -4,30 +4,80 @@ namespace mog {
 
 template <class T>
 Rectangle<T>::Rectangle() :
-	x( 0 ),
-	y( 0 ),
-	width( 0 ),
-	height( 0 )
+	_location( 0, 0 ),
+	_size( 0, 0 )
 {
 }
 
 template <class T>
-Rectangle<T>::Rectangle( T x_, T y_, T width_, T height_ ) :
-	x( x_ ),
-	y( y_ ),
-	width( width_ ),
-	height( height_ )
+Rectangle<T>::Rectangle( T x, T y, T width, T height ) :
+	_location( x, y ),
+	_size( width, height )
 {
 }
 
 template <class T>
-Rectangle<T>::Rectangle( std::initializer_list<T> list ) :
-	x( *(list.begin() + 0) ),
-	y( *(list.begin() + 1) ),
-	width( *(list.begin() + 2) ),
-	height( *(list.begin() + 3) )
-{
-	assert( "4 values expected in initializer list." && list.size() == 4 );
+T Rectangle<T>::left() const {
+	return _location.x();
+}
+
+template <class T>
+T Rectangle<T>::top() const {
+	return _location.y();
+}
+
+template <class T>
+T Rectangle<T>::width() const {
+	return _size.x();
+}
+
+template <class T>
+T Rectangle<T>::height() const {
+	return _size.y();
+}
+
+template <class T>
+void Rectangle<T>::left( T value ) {
+	_location.x( value );
+}
+
+template <class T>
+void Rectangle<T>::top( T value ) {
+	_location.y( value );
+}
+
+template <class T>
+void Rectangle<T>::width( T value ) {
+	assert( "With must be >= 0." && value >= 0 );
+	_size.x( value );
+}
+
+template <class T>
+void Rectangle<T>::height( T value ) {
+	assert( "Height must be >= 0." && value >= 0 );
+	_size.y( value );
+}
+
+template <class T>
+void Rectangle<T>::location( Vector2<T> value ) {
+	_location = value;
+}
+
+template <class T>
+void Rectangle<T>::size( Vector2<T> value ) {
+	assert( "Width must be >= 0." && value.x() >= 0 );
+	assert( "Height must be >= 0." && value.y() >= 0 );
+	_size = value;
+}
+
+template <class T>
+Vector2<T> Rectangle<T>::location() const {
+	return _location;
+}
+
+template <class T>
+Vector2<T> Rectangle<T>::size() const {
+	return _size;
 }
 
 }
@@ -38,10 +88,10 @@ bool operator==(
 	const mog::Rectangle<T>& right
 ) {
 	return (
-		left.x == right.x &&
-		left.y == right.y &&
-		left.width == right.width &&
-		left.height == right.height
+		left.left() == right.left() &&
+		left.top() == right.top() &&
+		left.width() == right.width() &&
+		left.height() == right.height()
 	);
 }
 

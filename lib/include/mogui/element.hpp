@@ -1,6 +1,7 @@
 #pragma once
 
 #include <mogui/rectangle.hpp>
+#include <mogui/color.hpp>
 #include <string>
 #include <vector>
 #include <memory>
@@ -11,21 +12,25 @@ class Element {
 	public:
 		Element( const std::string& name );
 
-		const std::string& get_name() const;
+		const std::string& name() const;
 
-		std::size_t get_child_count() const;
-		void add( std::unique_ptr<Element> element );
-		Element& get_child( std::size_t index ) const;
-		Element* get_parent() const;
+		std::size_t child_count() const;
+		void append( std::unique_ptr<Element> element );
+		Element& child( std::size_t index ) const;
+		Element* parent() const;
 
-		Rectangle<float> get_bounds() const;
-		void set_bounds( Rectangle<float> bounds );
+		Rectangle<float> bounds() const;
+		void bounds( Rectangle<float> new_bounds );
+
+		Color background_color() const;
+		void background_color( Color new_background_color );
 
 	private:
-		std::vector<std::unique_ptr<Element>> m_children;
-		std::string m_name;
-		Rectangle<float> m_bounds;
-		Element* m_parent;
+		std::vector<std::unique_ptr<Element>> _children;
+		std::string _name;
+		Color _background_color;
+		Rectangle<float> _bounds;
+		Element* _parent;
 };
 
 }
@@ -41,23 +46,15 @@ class Element {
  * Each element can, but is not required to, have an image and text attached.
  */
 
-/** @fn mog::Element::Element
- * Undefined behaviour if bounds' width or height is less than zero.
- */
-
-/** @fn mog::Element::add
+/** @fn mog::Element::append
  * Ownership of the element is taken.
  */
 
-/** @fn mog::Element::get_child
+/** @fn mog::Element::child
  * Undefined behavior if index is invalid.
- * @see mog::Element::get_child_count
+ * @see mog::Element::child_count
  */
 
-/** @fn mog::Element::get_parent
+/** @fn mog::Element::parent
  * Returns the parent element or nullptr if there's none.
- */
-
-/** @fn mog::Element::set_bounds
- * Undefined behaviour if bounds' width or height is less than zero.
  */

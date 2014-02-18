@@ -6,8 +6,10 @@ set( INC_PATH ${PROJECT_SOURCE_DIR}/include )
 
 set(
 	SOURCES
+	${INC_PATH}/mogui/color.hpp
 	${INC_PATH}/mogui/config.hpp
 	${INC_PATH}/mogui/element.hpp
+	${SRC_PATH}/mogui/color.cpp
 	${SRC_PATH}/mogui/config.cpp
 	${SRC_PATH}/mogui/element.cpp
 )

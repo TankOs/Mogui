@@ -6,8 +6,8 @@ SCENARIO( "Vector2 can be constructed", "[mog::Vector2]" ) {
 		mog::Vector2<float> vector;
 
 		THEN( "x and y components are zero" ) {
-			CHECK( vector.x == 0.0f );
-			CHECK( vector.y == 0.0f );
+			CHECK( vector.x() == 0.0f );
+			CHECK( vector.y() == 0.0f );
 		}
 	}
 
@@ -15,8 +15,8 @@ SCENARIO( "Vector2 can be constructed", "[mog::Vector2]" ) {
 		mog::Vector2<float> vector( 1.0f, 2.0f );
 
 		THEN( "values are taken over" ) {
-			CHECK( vector.x == 1.0f );
-			CHECK( vector.y == 2.0f );
+			CHECK( vector.x() == 1.0f );
+			CHECK( vector.y() == 2.0f );
 		}
 	}
 }
@@ -30,8 +30,8 @@ SCENARIO( "Vector2 can be used for algebra", "[mog::Vector2]" ) {
 			auto result = v0 + v1;
 
 			THEN( "the result is the sum of both" ) {
-				CHECK( result.x == v0.x + v1.x );
-				CHECK( result.y == v0.y + v1.y );
+				CHECK( result.x() == v0.x() + v1.x() );
+				CHECK( result.y() == v0.y() + v1.y() );
 			}
 		}
 
@@ -39,8 +39,8 @@ SCENARIO( "Vector2 can be used for algebra", "[mog::Vector2]" ) {
 			auto result = v0 - v1;
 
 			THEN( "the result is the difference of both" ) {
-				CHECK( result.x == v0.x - v1.x );
-				CHECK( result.y == v0.y - v1.y );
+				CHECK( result.x() == v0.x() - v1.x() );
+				CHECK( result.y() == v0.y() - v1.y() );
 			}
 		}
 
@@ -49,8 +49,8 @@ SCENARIO( "Vector2 can be used for algebra", "[mog::Vector2]" ) {
 			auto& result_object = (result += v1);
 
 			THEN( "the result is the first vector incremented by the second" ) {
-				CHECK( result.x == v0.x + v1.x );
-				CHECK( result.y == v0.y + v1.y );
+				CHECK( result.x() == v0.x() + v1.x() );
+				CHECK( result.y() == v0.y() + v1.y() );
 			}
 
 			THEN( "the resulting object is the same as the first vector" ) {
@@ -63,8 +63,8 @@ SCENARIO( "Vector2 can be used for algebra", "[mog::Vector2]" ) {
 			auto& result_object = (result -= v1);
 
 			THEN( "the result is the first vector decremented by the second" ) {
-				CHECK( result.x == v0.x - v1.x );
-				CHECK( result.y == v0.y - v1.y );
+				CHECK( result.x() == v0.x() - v1.x() );
+				CHECK( result.y() == v0.y() - v1.y() );
 			}
 
 			THEN( "the resulting object is the same as the first vector" ) {
@@ -114,6 +114,28 @@ SCENARIO( "Common predefined Vector2 types can be used ", "[mog::Vector2]" ) {
 	WHEN( "Vector2u8 is used" ) {
 		THEN( "the type is equal to Vector2<int8_t>" ) {
 			CHECK( typeid( mog::Vector2u8 ) == typeid( mog::Vector2<uint8_t> ) );
+		}
+	}
+}
+
+SCENARIO( "Vectors can be compared for equality.", "[mog::Vector2]" ) {
+	GIVEN( "two unequal vectors" ) {
+		mog::Vector2<float> vector0( 1.0f, 2.0f );
+		mog::Vector2<float> vector1( 4.0f, 3.0f );
+
+		WHEN( "the vectors are compared" ) {
+			CHECK( (vector0 == vector1) == false );
+			CHECK( (vector0 != vector1) == true );
+		}
+	}
+
+	GIVEN( "two equal vectors" ) {
+		mog::Vector2<float> vector0( 1.0f, 2.0f );
+		mog::Vector2<float> vector1( 1.0f, 2.0f );
+
+		WHEN( "the vectors are compared" ) {
+			CHECK( (vector0 == vector1) == true );
+			CHECK( (vector0 != vector1) == false );
 		}
 	}
 }

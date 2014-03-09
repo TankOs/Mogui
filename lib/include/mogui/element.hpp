@@ -19,8 +19,8 @@ class Element {
 		Element& child( std::size_t index ) const;
 		Element* parent() const;
 
-		Rectangle<float> bounds() const;
-		void bounds( Rectangle<float> new_bounds );
+		Rectangle<float> area() const;
+		void area( Rectangle<float> new_area );
 
 		Color background_color() const;
 		void background_color( Color new_background_color );
@@ -29,7 +29,7 @@ class Element {
 		std::vector<std::unique_ptr<Element>> _children;
 		std::string _name;
 		Color _background_color;
-		Rectangle<float> _bounds;
+		Rectangle<float> _area;
 		Element* _parent;
 };
 

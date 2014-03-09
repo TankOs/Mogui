@@ -6,7 +6,7 @@ namespace mog {
 Element::Element( const std::string& name ) :
 	_name( name ),
 	_background_color( 1.0f, 1.0f, 1.0f, 1.0f ),
-	_bounds( 0.0f, 0.0f, 0.0f, 0.0f ),
+	_area( 0.0f, 0.0f, 0.0f, 0.0f ),
 	_parent( nullptr )
 {
 }
@@ -36,12 +36,12 @@ Element* Element::parent() const {
 	return _parent;
 }
 
-Rectangle<float> Element::bounds() const {
-	return _bounds;
+Rectangle<float> Element::area() const {
+	return _area;
 }
 
-void Element::bounds( Rectangle<float> new_bounds ) {
-	_bounds = new_bounds;
+void Element::area( Rectangle<float> new_area ) {
+	_area = new_area;
 }
 
 Color Element::background_color() const {

@@ -14,9 +14,9 @@ SCENARIO( "Element can be constructed", "[mog::Element]" ) {
 		THEN( "the element does not have a parent set" ) {
 			CHECK( element.parent() == nullptr );
 		}
-		THEN( "bounds are at 0, 0 and size is 0 * 0" ) {
+		THEN( "area is at 0, 0 and size is 0 * 0" ) {
 			CHECK(
-				element.bounds() ==
+				element.area() ==
 				mog::Rectangle<float>( 0.0f, 0.0f, 0.0f, 0.0f )
 			);
 		}
@@ -62,18 +62,18 @@ SCENARIO( "Elements can be appended", "[mog::Element]" ) {
 	}
 }
 
-SCENARIO( "Element bounds can be changed.", "[mog::Element]" ) {
-	GIVEN( "a default element and new bounds" ) {
+SCENARIO( "Element area can be changed.", "[mog::Element]" ) {
+	GIVEN( "a default element" ) {
 		mog::Element element( "default" );
-		mog::Rectangle<float> new_bounds( 1.0f, 2.0f, 3.0f, 4.0f );
+		mog::Rectangle<float> new_area( 1.0f, 2.0f, 3.0f, 4.0f );
 
-		REQUIRE( element.bounds() != new_bounds );
+		REQUIRE( element.area() != new_area );
 
-		WHEN( "element's bounds are changed" ) {
-			element.bounds( new_bounds );
+		WHEN( "element's area is changed" ) {
+			element.area( new_area );
 
-			THEN( "they are equal to the new bounds" ) {
-				CHECK( element.bounds() == new_bounds );
+			THEN( "they are equal to the new area" ) {
+				CHECK( element.area() == new_area );
 			}
 		}
 	}

@@ -7,6 +7,7 @@ set(
 	SOURCES
 	${SRC_PATH}/color.cpp
 	${SRC_PATH}/config.cpp
+	${SRC_PATH}/drawable_container.cpp
 	${SRC_PATH}/element.cpp
 	${SRC_PATH}/opengl_es_renderer.cpp
 	${SRC_PATH}/rectangle.cpp

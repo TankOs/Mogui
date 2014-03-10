@@ -10,12 +10,14 @@ set(
 	${INC_PATH}/mogui/config.hpp
 	${INC_PATH}/mogui/drawable_container.hpp
 	${INC_PATH}/mogui/element.hpp
+	${INC_PATH}/mogui/event.hpp
 	${INC_PATH}/mogui/opengl_es_renderer.hpp
 	${INC_PATH}/mogui/renderer.hpp
 	${SRC_PATH}/mogui/color.cpp
 	${SRC_PATH}/mogui/config.cpp
 	${SRC_PATH}/mogui/drawable_container.cpp
 	${SRC_PATH}/mogui/element.cpp
+	${SRC_PATH}/mogui/event.cpp
 	${SRC_PATH}/mogui/opengl_es_renderer.cpp
 )
 

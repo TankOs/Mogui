@@ -52,4 +52,15 @@ void Element::background_color( Color new_background_color ) {
 	_background_color = new_background_color;
 }
 
+void Element::on_event( Event& /*event*/ ) {
+}
+
+void Element::propagate( Event& event ) {
+	on_event( event );
+
+	for( auto& child : _children ) {
+		child->propagate( event );
+	}
+}
+
 }

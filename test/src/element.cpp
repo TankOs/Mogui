@@ -1,5 +1,33 @@
 #include <mogui/element.hpp>
+#include <mogui/event.hpp>
 #include <catch.hpp>
+
+class TestElement : public mog::Element {
+	public:
+		TestElement() :
+			mog::Element( "test" ),
+			_received_event_count( 0 ),
+			_last_event( mog::Event::Action::MOUSE_MOVE )
+		{
+		}
+
+		mog::Event last_event() const {
+			return _last_event;
+		}
+
+		uint32_t received_event_count() const {
+			return _received_event_count;
+		}
+
+	private:
+		void on_event( mog::Event& event ) {
+			++_received_event_count;
+			_last_event = event;
+		}
+
+		uint32_t _received_event_count;
+		mog::Event _last_event;
+};
 
 SCENARIO( "Element can be constructed", "[mog::Element]" ) {
 	WHEN( "name constructor is used" ) {
@@ -91,6 +119,41 @@ SCENARIO( "Background color can be changed.", "[mog::Element" ) {
 
 			THEN( "it's equal to the new color" ) {
 				CHECK( element.background_color() == new_color );
+			}
+		}
+	}
+}
+
+SCENARIO( "Events can be inserted into an element hierarchy" ) {
+	GIVEN( "an element hiararchy and a key press event" ) {
+		using mog::Element;
+		using mog::Event;
+
+		Event event( Event::Action::KEY_PRESS );
+
+		TestElement root;
+		root.append( std::unique_ptr<TestElement>( new TestElement ) );
+		auto& level0 = *static_cast<TestElement*>( &root.child( 0 ) );
+
+		level0.append( std::unique_ptr<TestElement>( new TestElement ) );
+		auto& level1 = *static_cast<TestElement*>( &level0.child( 0 ) );
+
+		WHEN( "an event is inserted at the root node" ) {
+			root.propagate( event );
+
+			THEN( "the root element processed the event" ) {
+				CHECK( root.last_event().action() == Event::Action::KEY_PRESS );
+				CHECK( root.received_event_count() == 1 );
+			}
+
+			THEN( "the level0 element processed the event" ) {
+				CHECK( level0.last_event().action() == Event::Action::KEY_PRESS );
+				CHECK( level0.received_event_count() == 1 );
+			}
+
+			THEN( "the level1 element processed the event" ) {
+				CHECK( level1.last_event().action() == Event::Action::KEY_PRESS );
+				CHECK( level1.received_event_count() == 1 );
 			}
 		}
 	}

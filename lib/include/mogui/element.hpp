@@ -8,9 +8,12 @@
 
 namespace mog {
 
+class Event;
+
 class Element {
 	public:
 		Element( const std::string& name );
+		virtual ~Element() = default;
 
 		const std::string& name() const;
 
@@ -25,7 +28,11 @@ class Element {
 		Color background_color() const;
 		void background_color( Color new_background_color );
 
+		void propagate( Event& event );
+
 	private:
+		virtual void on_event( Event& event );
+
 		std::vector<std::unique_ptr<Element>> _children;
 		std::string _name;
 		Color _background_color;

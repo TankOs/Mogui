@@ -19,6 +19,7 @@ class Element {
 
 		std::size_t get_child_count() const;
 		void append( std::unique_ptr<Element> element );
+		Element& create_child( const std::string& name );
 		Element& get_child( std::size_t index ) const;
 		Element* get_parent() const;
 

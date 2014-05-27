@@ -9,6 +9,7 @@ Element::Element( const std::string& name ) :
 	_area( 0.0f, 0.0f, 0.0f, 0.0f ),
 	_parent( nullptr )
 {
+	assert( "Invalid name." && name.size() > 0 );
 }
 
 const std::string& Element::get_name() const {
@@ -61,6 +62,14 @@ void Element::propagate( Event& event ) {
 	for( auto& child : _children ) {
 		child->propagate( event );
 	}
+}
+
+Element& Element::create_child( const std::string& name ) {
+	assert( "Invalid name." && name.size() > 0 );
+
+	append( std::unique_ptr<Element>( new Element( name ) ) );
+
+	return *_children.back();
 }
 
 }

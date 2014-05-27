@@ -164,3 +164,22 @@ SCENARIO( "Insert events into an Element hierarchy." ) {
 		}
 	}
 }
+
+SCENARIO( "Create child Elements." ) {
+	GIVEN( "an empty root element" ) {
+		mog::Element root( "root" );
+
+		WHEN( "some childs are created" ) {
+			auto& child0 = root.create_child( "0" );
+			auto& child1 = root.create_child( "1" );
+			auto& child2 = root.create_child( "2" );
+
+			THEN( "they exist accordingly" ) {
+				CHECK( root.get_child_count() == 3 );
+				CHECK( &child0 == &root.get_child( 0 ) );
+				CHECK( &child1 == &root.get_child( 1 ) );
+				CHECK( &child2 == &root.get_child( 2 ) );
+			}
+		}
+	}
+}

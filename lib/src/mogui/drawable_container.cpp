@@ -3,7 +3,7 @@
 
 namespace mog {
 
-std::size_t DrawableContainer::drawable_count() const {
+std::size_t DrawableContainer::get_drawable_count() const {
 	return _drawables.size();
 }
 
@@ -16,12 +16,12 @@ void DrawableContainer::reset() {
 	_drawables.clear();
 }
 
-mog::Color DrawableContainer::drawable_color( std::size_t index ) const {
+mog::Color DrawableContainer::get_drawable_color( std::size_t index ) const {
 	assert( "Invalid drawable index." && index < _drawables.size() );
 	return _drawables[index].color;
 }
 
-void DrawableContainer::drawable_color( std::size_t index, mog::Color color ) {
+void DrawableContainer::set_drawable_color( std::size_t index, mog::Color color ) {
 	assert( "Invalid drawable index." && index < _drawables.size() );
 	_drawables[index].color = color;
 

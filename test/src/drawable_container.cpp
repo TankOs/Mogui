@@ -13,11 +13,11 @@ class DummyContainer : public mog::DrawableContainer {
 		{
 		}
 
-		Change last_change() const {
+		Change get_last_change() const {
 			return static_cast<Change>( _last_change );
 		}
 
-		std::size_t last_id() const {
+		std::size_t get_last_id() const {
 			return _last_id;
 		}
 
@@ -36,17 +36,17 @@ const mog::Color RED_COLOR( 1, 0, 0, 1 );
 const mog::Color GREEN_COLOR( 0, 1, 0, 1 );
 const mog::Color BLUE_COLOR( 0, 0, 1, 1 );
 
-SCENARIO( "DrawableContainers can be constructed." ) {
+SCENARIO( "Construct DrawableContainers." ) {
 	WHEN( "the default constructor is used" ) {
 		mog::DrawableContainer container;
 
 		THEN( "the drawable count is 0" ) {
-			CHECK( container.drawable_count() == 0 );
+			CHECK( container.get_drawable_count() == 0 );
 		}
 	}
 }
 
-SCENARIO( "Drawables can be created in DrawableContainers." ) {
+SCENARIO( "Create drawable in DrawableContainer." ) {
 	GIVEN( "an empty DrawableContainer" ) {
 		mog::DrawableContainer container;
 
@@ -57,7 +57,7 @@ SCENARIO( "Drawables can be created in DrawableContainers." ) {
 			ids.push_back( container.create_drawable() );
 
 			THEN( "the drawable count is 2" ) {
-				CHECK( container.drawable_count() == 2 );
+				CHECK( container.get_drawable_count() == 2 );
 			}
 
 			THEN( "the drawable IDs are sequential and start at 0" ) {
@@ -66,14 +66,14 @@ SCENARIO( "Drawables can be created in DrawableContainers." ) {
 			}
 
 			THEN( "the color of the drawables is black" ) {
-				CHECK( container.drawable_color( 0 ) == BLACK_COLOR );
-				CHECK( container.drawable_color( 1 ) == BLACK_COLOR );
+				CHECK( container.get_drawable_color( 0 ) == BLACK_COLOR );
+				CHECK( container.get_drawable_color( 1 ) == BLACK_COLOR );
 			}
 		}
 	}
 }
 
-SCENARIO( "DrawableContainers can be reset." ) {
+SCENARIO( "Reset DrawableContainer." ) {
 	GIVEN( "a DrawableContainer with some drawables" ) {
 		mog::DrawableContainer container;
 		container.create_drawable();
@@ -84,7 +84,7 @@ SCENARIO( "DrawableContainers can be reset." ) {
 			container.reset();
 
 			THEN( "all drawables are removed" ) {
-				CHECK( container.drawable_count() == 0 );
+				CHECK( container.get_drawable_count() == 0 );
 			}
 
 			THEN( "the ID of the next newly created drawable starts at 0 again" ) {
@@ -94,7 +94,7 @@ SCENARIO( "DrawableContainers can be reset." ) {
 	}
 }
 
-SCENARIO( "Drawable colors can be changed." ) {
+SCENARIO( "Change drawable color." ) {
 	GIVEN( "a DrawableContainer with some drawables" ) {
 		mog::DrawableContainer container;
 		container.create_drawable();
@@ -102,32 +102,32 @@ SCENARIO( "Drawable colors can be changed." ) {
 		container.create_drawable();
 		
 		WHEN( "the colors are changed" ) {
-			container.drawable_color( 0, RED_COLOR );
-			container.drawable_color( 1, GREEN_COLOR );
-			container.drawable_color( 2, BLUE_COLOR );
+			container.set_drawable_color( 0, RED_COLOR );
+			container.set_drawable_color( 1, GREEN_COLOR );
+			container.set_drawable_color( 2, BLUE_COLOR );
 
 			THEN( "the drawable colors are set accordingly" ) {
-				CHECK( container.drawable_color( 0 ) == RED_COLOR );
-				CHECK( container.drawable_color( 1 ) == GREEN_COLOR );
-				CHECK( container.drawable_color( 2 ) == BLUE_COLOR );
+				CHECK( container.get_drawable_color( 0 ) == RED_COLOR );
+				CHECK( container.get_drawable_color( 1 ) == GREEN_COLOR );
+				CHECK( container.get_drawable_color( 2 ) == BLUE_COLOR );
 			}
 		}
 	}
 }
 
-SCENARIO( "Derived DrawableContainer class is notified of drawable changes." ) {
+SCENARIO( "Notify derived DrawableContainer of drawable changes." ) {
 	GIVEN( "a container with a drawable" ) {
 		DummyContainer container;
 		container.create_drawable();
 
 		WHEN( "the color of a drawable is changed" ) {
-			container.drawable_color( 0, RED_COLOR );
+			container.set_drawable_color( 0, RED_COLOR );
 
 			THEN( "the change type is COLOR" ) {
-				CHECK( container.last_change() == DummyContainer::Change::COLOR );
+				CHECK( container.get_last_change() == DummyContainer::Change::COLOR );
 			}
 			THEN( "the drawable ID is 0" ) {
-				CHECK( container.last_id() == 0 );
+				CHECK( container.get_last_id() == 0 );
 			}
 		}
 	}

@@ -10,12 +10,12 @@ class DrawableContainer {
 	public:
 		virtual ~DrawableContainer() = default;
 
-		std::size_t drawable_count() const;
+		std::size_t get_drawable_count() const;
 		std::size_t create_drawable();
 		void reset();
 
-		mog::Color drawable_color( std::size_t index ) const;
-		void drawable_color( std::size_t index, mog::Color color );
+		mog::Color get_drawable_color( std::size_t index ) const;
+		void set_drawable_color( std::size_t index, mog::Color color );
 
 	protected:
 		enum class Change : uint8_t {

@@ -8,18 +8,18 @@ class Color {
 		Color( float r, float g, float b );
 		Color( float r, float g, float b, float a );
 
-		float r() const;
-		float g() const;
-		float b() const;
-		float a() const;
+		float get_r() const;
+		float get_g() const;
+		float get_b() const;
+		float get_a() const;
 
-		void r( float value );
-		void g( float value );
-		void b( float value );
-		void a( float value );
+		void set_r( float value );
+		void set_g( float value );
+		void set_b( float value );
+		void set_a( float value );
 
-		void rgb( float r, float g, float b );
-		void rgba( float r, float g, float b, float a );
+		void set_rgb( float r, float g, float b );
+		void set_rgba( float r, float g, float b, float a );
 
 	private:
 		float _r;
@@ -41,26 +41,26 @@ bool operator!=( const mog::Color& lhs, const mog::Color& rhs );
  * undefined behavior.
  */
 
-/** @fn mog::Color::r
+/** @fn mog::Color::set_r
  * Value must be clamped to [0..1], otherwise undefined behavior.
  */
 
-/** @fn mog::Color::g
+/** @fn mog::Color::set_g
  * Value must be clamped to [0..1], otherwise undefined behavior.
  */
 
-/** @fn mog::Color::b
+/** @fn mog::Color::set_b
  * Value must be clamped to [0..1], otherwise undefined behavior.
  */
 
-/** @fn mog::Color::a
+/** @fn mog::Color::set_a
  * Value must be clamped to [0..1], otherwise undefined behavior.
  */
 
-/** @fn mog::Color::rgb
+/** @fn mog::Color::set_rgb
  * Values must be clamped to [0..1], otherwise undefined behavior.
  */
 
-/** @fn mog::Color::rgba
+/** @fn mog::Color::set_rgba
  * Values must be clamped to [0..1], otherwise undefined behavior.
  */

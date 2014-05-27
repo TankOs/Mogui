@@ -15,22 +15,22 @@ Vector2<T>::Vector2( T x, T y ) :
 }
 
 template <class T>
-T Vector2<T>::x() const {
+T Vector2<T>::get_x() const {
 	return _x;
 }
 
 template <class T>
-T Vector2<T>::y() const {
+T Vector2<T>::get_y() const {
 	return _y;
 }
 
 template <class T>
-void Vector2<T>::x( T value ) {
+void Vector2<T>::set_x( T value ) {
 	_x = value;
 }
 
 template <class T>
-void Vector2<T>::y( T value ) {
+void Vector2<T>::set_y( T value ) {
 	_y = value;
 }
 
@@ -42,8 +42,8 @@ mog::Vector2<T> operator+(
 	const mog::Vector2<T>& right
 ) {
 	return mog::Vector2<T>(
-		left.x() + right.x(),
-		left.y() + right.y()
+		left.get_x() + right.get_x(),
+		left.get_y() + right.get_y()
 	);
 }
 
@@ -52,8 +52,8 @@ mog::Vector2<T>& operator+=(
 	mog::Vector2<T>& left,
 	const mog::Vector2<T>& right
 ) {
-	left.x( left.x() + right.x() );
-	left.y( left.y() + right.y() );
+	left.set_x( left.get_x() + right.get_x() );
+	left.set_y( left.get_y() + right.get_y() );
 
 	return left;
 }
@@ -64,8 +64,8 @@ mog::Vector2<T> operator-(
 	const mog::Vector2<T>& right
 ) {
 	return mog::Vector2<T>(
-		left.x() - right.x(),
-		left.y() - right.y()
+		left.get_x() - right.get_x(),
+		left.get_y() - right.get_y()
 	);
 }
 
@@ -74,8 +74,8 @@ mog::Vector2<T>& operator-=(
 	mog::Vector2<T>& left,
 	const mog::Vector2<T>& right
 ) {
-	left.x( left.x() - right.x() );
-	left.y( left.y() - right.y() );
+	left.set_x( left.get_x() - right.get_x() );
+	left.set_y( left.get_y() - right.get_y() );
 
 	return left;
 }
@@ -86,8 +86,8 @@ bool operator==(
 	const mog::Vector2<T>& right
 ) {
 	return (
-		left.x() == right.x() &&
-		left.y() == right.y()
+		left.get_x() == right.get_x() &&
+		left.get_y() == right.get_y()
 	);
 }
 

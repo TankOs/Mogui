@@ -10,11 +10,11 @@ class Vector2 {
 		Vector2();
 		Vector2( T x, T y );
 
-		T x() const;
-		T y() const;
+		T get_x() const;
+		T get_y() const;
 
-		void x( T value );
-		void y( T value );
+		void set_x( T value );
+		void set_y( T value );
 
 	private:
 		T _x;

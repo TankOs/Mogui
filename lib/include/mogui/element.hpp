@@ -15,18 +15,18 @@ class Element {
 		Element( const std::string& name );
 		virtual ~Element() = default;
 
-		const std::string& name() const;
+		const std::string& get_name() const;
 
-		std::size_t child_count() const;
+		std::size_t get_child_count() const;
 		void append( std::unique_ptr<Element> element );
-		Element& child( std::size_t index ) const;
-		Element* parent() const;
+		Element& get_child( std::size_t index ) const;
+		Element* get_parent() const;
 
-		Rectangle<float> area() const;
-		void area( Rectangle<float> new_area );
+		Rectangle<float> get_area() const;
+		void set_area( Rectangle<float> new_area );
 
-		Color background_color() const;
-		void background_color( Color new_background_color );
+		Color get_background_color() const;
+		void set_background_color( Color new_background_color );
 
 		void propagate( Event& event );
 
@@ -57,11 +57,11 @@ class Element {
  * Ownership of the element is taken.
  */
 
-/** @fn mog::Element::child
+/** @fn mog::Element::get_child
  * Undefined behavior if index is invalid.
- * @see mog::Element::child_count
+ * @see mog::Element::get_child_count
  */
 
-/** @fn mog::Element::parent
+/** @fn mog::Element::get_parent
  * Returns the parent element or nullptr if there's none.
  */

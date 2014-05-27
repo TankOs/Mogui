@@ -13,15 +13,15 @@ Event::Event( Action action ) :
 	memset( &_key_data, 0, sizeof( _key_data ) );
 }
 
-Event::Action Event::action() const {
+Event::Action Event::get_action() const {
 	return _action;
 }
 
-Element* Event::sender() const {
+Element* Event::get_sender() const {
 	return _sender;
 }
 
-Vector2<uint16_t> Event::mouse_position() const {
+Vector2<uint16_t> Event::get_mouse_position() const {
 	assert(
 		"Mouse position not valid for current event action." && (
 			_action == Action::MOUSE_MOVE ||
@@ -37,7 +37,7 @@ Vector2<uint16_t> Event::mouse_position() const {
 	);
 }
 
-Event::MouseButton Event::mouse_button() const {
+Event::MouseButton Event::get_mouse_button() const {
 	assert(
 		"Mouse button not valid for current event action." && (
 			_action == Action::MOUSE_BUTTON_PRESS ||
@@ -48,7 +48,7 @@ Event::MouseButton Event::mouse_button() const {
 	return _mouse_button_data.button;
 }
 
-uint32_t Event::key() const {
+uint32_t Event::get_key() const {
 	assert(
 		"Key not valid for current event action." && (
 			_action == Action::KEY_PRESS ||

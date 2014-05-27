@@ -1,13 +1,13 @@
 #include <mogui/vector2.hpp>
 #include <catch.hpp>
 
-SCENARIO( "Vector2 can be constructed", "[mog::Vector2]" ) {
+SCENARIO( "Construct Vector2." ) {
 	WHEN( "Default constructor is used" ) {
 		mog::Vector2<float> vector;
 
 		THEN( "x and y components are zero" ) {
-			CHECK( vector.x() == 0.0f );
-			CHECK( vector.y() == 0.0f );
+			CHECK( vector.get_x() == 0.0f );
+			CHECK( vector.get_y() == 0.0f );
 		}
 	}
 
@@ -15,13 +15,13 @@ SCENARIO( "Vector2 can be constructed", "[mog::Vector2]" ) {
 		mog::Vector2<float> vector( 1.0f, 2.0f );
 
 		THEN( "values are taken over" ) {
-			CHECK( vector.x() == 1.0f );
-			CHECK( vector.y() == 2.0f );
+			CHECK( vector.get_x() == 1.0f );
+			CHECK( vector.get_y() == 2.0f );
 		}
 	}
 }
 
-SCENARIO( "Vector2 can be used for algebra", "[mog::Vector2]" ) {
+SCENARIO( "Vector2 algebra." ) {
 	GIVEN( "two Vector2<float>s" ) {
 		mog::Vector2<float> v0( 1.0f, 2.0f );
 		mog::Vector2<float> v1( 3.0f, 4.0f );
@@ -30,8 +30,8 @@ SCENARIO( "Vector2 can be used for algebra", "[mog::Vector2]" ) {
 			auto result = v0 + v1;
 
 			THEN( "the result is the sum of both" ) {
-				CHECK( result.x() == v0.x() + v1.x() );
-				CHECK( result.y() == v0.y() + v1.y() );
+				CHECK( result.get_x() == v0.get_x() + v1.get_x() );
+				CHECK( result.get_y() == v0.get_y() + v1.get_y() );
 			}
 		}
 
@@ -39,8 +39,8 @@ SCENARIO( "Vector2 can be used for algebra", "[mog::Vector2]" ) {
 			auto result = v0 - v1;
 
 			THEN( "the result is the difference of both" ) {
-				CHECK( result.x() == v0.x() - v1.x() );
-				CHECK( result.y() == v0.y() - v1.y() );
+				CHECK( result.get_x() == v0.get_x() - v1.get_x() );
+				CHECK( result.get_y() == v0.get_y() - v1.get_y() );
 			}
 		}
 
@@ -49,8 +49,8 @@ SCENARIO( "Vector2 can be used for algebra", "[mog::Vector2]" ) {
 			auto& result_object = (result += v1);
 
 			THEN( "the result is the first vector incremented by the second" ) {
-				CHECK( result.x() == v0.x() + v1.x() );
-				CHECK( result.y() == v0.y() + v1.y() );
+				CHECK( result.get_x() == v0.get_x() + v1.get_x() );
+				CHECK( result.get_y() == v0.get_y() + v1.get_y() );
 			}
 
 			THEN( "the resulting object is the same as the first vector" ) {
@@ -63,8 +63,8 @@ SCENARIO( "Vector2 can be used for algebra", "[mog::Vector2]" ) {
 			auto& result_object = (result -= v1);
 
 			THEN( "the result is the first vector decremented by the second" ) {
-				CHECK( result.x() == v0.x() - v1.x() );
-				CHECK( result.y() == v0.y() - v1.y() );
+				CHECK( result.get_x() == v0.get_x() - v1.get_x() );
+				CHECK( result.get_y() == v0.get_y() - v1.get_y() );
 			}
 
 			THEN( "the resulting object is the same as the first vector" ) {
@@ -74,7 +74,7 @@ SCENARIO( "Vector2 can be used for algebra", "[mog::Vector2]" ) {
 	}
 }
 
-SCENARIO( "Common predefined Vector2 types can be used ", "[mog::Vector2]" ) {
+SCENARIO( "Predefined Vector2 typenames." ) {
 	WHEN( "Vector2f is used" ) {
 		THEN( "the type is equal to Vector2<float>" ) {
 			CHECK( typeid( mog::Vector2f ) == typeid( mog::Vector2<float> ) );
@@ -118,7 +118,7 @@ SCENARIO( "Common predefined Vector2 types can be used ", "[mog::Vector2]" ) {
 	}
 }
 
-SCENARIO( "Vectors can be compared for equality.", "[mog::Vector2]" ) {
+SCENARIO( "Compare Vector2 equality." ) {
 	GIVEN( "two unequal vectors" ) {
 		mog::Vector2<float> vector0( 1.0f, 2.0f );
 		mog::Vector2<float> vector1( 4.0f, 3.0f );

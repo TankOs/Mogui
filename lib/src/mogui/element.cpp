@@ -11,11 +11,11 @@ Element::Element( const std::string& name ) :
 {
 }
 
-const std::string& Element::name() const {
+const std::string& Element::get_name() const {
 	return _name;
 }
 
-std::size_t Element::child_count() const {
+std::size_t Element::get_child_count() const {
 	return _children.size();
 }
 
@@ -27,28 +27,28 @@ void Element::append( std::unique_ptr<Element> element ) {
 	_children.push_back( std::move( element ) );
 }
 
-Element& Element::child( std::size_t index ) const {
-	assert( "Invalid child index." && index < child_count() );
+Element& Element::get_child( std::size_t index ) const {
+	assert( "Invalid child index." && index < get_child_count() );
 	return *_children[index];
 }
 
-Element* Element::parent() const {
+Element* Element::get_parent() const {
 	return _parent;
 }
 
-Rectangle<float> Element::area() const {
+Rectangle<float> Element::get_area() const {
 	return _area;
 }
 
-void Element::area( Rectangle<float> new_area ) {
+void Element::set_area( Rectangle<float> new_area ) {
 	_area = new_area;
 }
 
-Color Element::background_color() const {
+Color Element::get_background_color() const {
 	return _background_color;
 }
 
-void Element::background_color( Color new_background_color ) {
+void Element::set_background_color( Color new_background_color ) {
 	_background_color = new_background_color;
 }
 

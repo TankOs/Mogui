@@ -10,6 +10,7 @@ set(
 	${SRC_PATH}/drawable_container.cpp
 	${SRC_PATH}/element.cpp
 	${SRC_PATH}/event.cpp
+	${SRC_PATH}/event_propagator.cpp
 	${SRC_PATH}/opengl_es_renderer.cpp
 	${SRC_PATH}/rectangle.cpp
 	${SRC_PATH}/vector2.cpp

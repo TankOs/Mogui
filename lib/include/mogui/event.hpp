@@ -27,13 +27,13 @@ class Event {
 
 		Event( Action action );
 
-		Action action() const;
-		Element* sender() const;
+		Action get_action() const;
+		Element* get_sender() const;
 
-		Vector2<uint16_t> mouse_position() const;
-		MouseButton mouse_button() const;
+		Vector2<uint16_t> get_mouse_position() const;
+		MouseButton get_mouse_button() const;
 
-		uint32_t key() const;
+		uint32_t get_key() const;
 
 	private:
 		Element* _sender;

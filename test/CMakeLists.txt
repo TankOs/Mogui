@@ -9,6 +9,7 @@ set(
 	${SRC_PATH}/config.cpp
 	${SRC_PATH}/drawable_container.cpp
 	${SRC_PATH}/element.cpp
+	${SRC_PATH}/element_selector.cpp
 	${SRC_PATH}/event.cpp
 	${SRC_PATH}/event_propagator.cpp
 	${SRC_PATH}/opengl_es_renderer.cpp

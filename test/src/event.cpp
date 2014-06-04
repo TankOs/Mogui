@@ -9,7 +9,6 @@ SCENARIO( "Construct Event." ) {
 
 		THEN( "all properties are set to their defaults" ) {
 			CHECK( event.get_action() == Event::Action::MOUSE_MOVE );
-			CHECK( event.get_sender() == nullptr );
 			CHECK( event.get_mouse_position() == mog::Vector2<uint16_t>( 0, 0 ) );
 		}
 	}
@@ -19,7 +18,6 @@ SCENARIO( "Construct Event." ) {
 
 		THEN( "all properties are set to their defaults" ) {
 			CHECK( event.get_action() == Event::Action::MOUSE_BUTTON_PRESS );
-			CHECK( event.get_sender() == nullptr );
 			CHECK( event.get_mouse_position() == mog::Vector2<uint16_t>( 0, 0 ) );
 			CHECK( event.get_mouse_button() == Event::MouseButton::LEFT );
 		}
@@ -30,7 +28,6 @@ SCENARIO( "Construct Event." ) {
 
 		THEN( "all properties are set to their defaults" ) {
 			CHECK( event.get_action() == Event::Action::MOUSE_BUTTON_RELEASE );
-			CHECK( event.get_sender() == nullptr );
 			CHECK( event.get_mouse_position() == mog::Vector2<uint16_t>( 0, 0 ) );
 			CHECK( event.get_mouse_button() == Event::MouseButton::LEFT );
 		}
@@ -41,7 +38,6 @@ SCENARIO( "Construct Event." ) {
 
 		THEN( "all properties are set to their defaults" ) {
 			CHECK( event.get_action() == Event::Action::KEY_PRESS );
-			CHECK( event.get_sender() == nullptr );
 			CHECK( event.get_key() == 0 );
 		}
 	}
@@ -51,7 +47,6 @@ SCENARIO( "Construct Event." ) {
 
 		THEN( "all properties are set to their defaults" ) {
 			CHECK( event.get_action() == Event::Action::KEY_RELEASE );
-			CHECK( event.get_sender() == nullptr );
 			CHECK( event.get_key() == 0 );
 		}
 	}

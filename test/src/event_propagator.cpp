@@ -1,4 +1,5 @@
 #include <mogui/event_propagator.hpp>
+#include <mogui/element_selector.hpp>
 #include <mogui/element.hpp>
 #include <catch.hpp>
 
@@ -12,29 +13,31 @@ SCENARIO( "Construct EventPropagator." ) {
 	}
 }
 
-/*
-SCENARIO( "Register actions." ) {
-	GIVEN( "an element hierarchy and a propagator" ) {
-		mog::Element root( "root" );
-		auto& child0 = root.create_child( "child0" );
-		auto& child1 = root.create_child( "child1" );
-		auto& child0child0 = child0.create_child( "child0child0" );
-		auto& child0child1 = child0.create_child( "child0child1" );
-		auto& child1child0 = child1.create_child( "child1child0" );
-		auto& child1child1 = child1.create_child( "child1child1" );
+SCENARIO( "Register EventPropagator action handlers." ) {
+	GIVEN( "a propagator and some elements" ) {
+		mog::Element first_element( "first" );
+		mog::Element second_element( "second" );
 
 		mog::EventPropagator gator;
 
-		WHEN( "an action handler is registered" ) {
+		WHEN( "a handler for one element is registered" ) {
+			/*
 			gator.register_action_handler(
-				mog::EventPropagator::Action::Click,
-				[]( mog::Element& ) {}
+				[]( mog::Element& ) {},
+				first_element,
+				mog::EventPropagator::Action::Click
 			);
+			*/
 
 			THEN( "the handler count is set accordingly" ) {
+				/*
 				CHECK( gator.get_action_handler_count() == 1 );
+				*/
+			}
+
+			THEN( "the action handler is set accordingly" ) {
+				//const auto& handler = gator.get_action_handler( 0 );
 			}
 		}
 	}
 }
-*/

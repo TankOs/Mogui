@@ -5,6 +5,7 @@ set( SRC_PATH ${PROJECT_SOURCE_DIR}/src )
 
 set(
 	SOURCES
+	${SRC_PATH}/action_handler.cpp
 	${SRC_PATH}/color.cpp
 	${SRC_PATH}/config.cpp
 	${SRC_PATH}/drawable_container.cpp

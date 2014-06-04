@@ -5,7 +5,6 @@
 namespace mog {
 
 Event::Event( Action action ) :
-	_sender( nullptr ),
 	_action( action )
 {
 	memset( &_mouse_move_data, 0, sizeof( _mouse_move_data ) );
@@ -15,10 +14,6 @@ Event::Event( Action action ) :
 
 Event::Action Event::get_action() const {
 	return _action;
-}
-
-Element* Event::get_sender() const {
-	return _sender;
 }
 
 Vector2<uint16_t> Event::get_mouse_position() const {

@@ -7,8 +7,8 @@
 namespace mog {
 
 class OpenGLESRenderer : public Renderer {
-	public:
-	private:
+  public:
+  private:
 };
 
 }

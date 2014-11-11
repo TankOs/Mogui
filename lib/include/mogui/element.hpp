@@ -11,34 +11,34 @@ namespace mog {
 class Event;
 
 class Element {
-	public:
-		Element( const std::string& name );
-		virtual ~Element() = default;
+  public:
+    Element( const std::string& name );
+    virtual ~Element() = default;
 
-		const std::string& get_name() const;
+    const std::string& get_name() const;
 
-		std::size_t get_child_count() const;
-		void append( std::unique_ptr<Element> element );
-		Element& create_child( const std::string& name );
-		Element& get_child( std::size_t index ) const;
-		Element* get_parent() const;
+    std::size_t get_child_count() const;
+    void append( std::unique_ptr<Element> element );
+    Element& create_child( const std::string& name );
+    Element& get_child( std::size_t index ) const;
+    Element* get_parent() const;
 
-		Rectangle<float> get_area() const;
-		void set_area( Rectangle<float> new_area );
+    Rectangle<float> get_area() const;
+    void set_area( Rectangle<float> new_area );
 
-		Color get_background_color() const;
-		void set_background_color( Color new_background_color );
+    Color get_background_color() const;
+    void set_background_color( Color new_background_color );
 
-		void propagate( Event& event );
+    void propagate( Event& event );
 
-	private:
-		virtual void on_event( Event& event );
+  private:
+    virtual void on_event( Event& event );
 
-		std::vector<std::unique_ptr<Element>> _children;
-		std::string _name;
-		Color _background_color;
-		Rectangle<float> _area;
-		Element* _parent;
+    std::vector<std::unique_ptr<Element>> _children;
+    std::string _name;
+    Color _background_color;
+    Rectangle<float> _area;
+    Element* _parent;
 };
 
 }

@@ -5,10 +5,10 @@
 namespace mog {
 
 class Renderer : public DrawableContainer {
-	public:
-		virtual ~Renderer() = default;
+  public:
+    virtual ~Renderer() = default;
 
-	private:
+  private:
 };
 
 }

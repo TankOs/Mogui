@@ -3,29 +3,29 @@
 namespace mog {
 
 class Color {
-	public:
-		Color();
-		Color( float r, float g, float b );
-		Color( float r, float g, float b, float a );
+  public:
+    Color();
+    Color( float r, float g, float b );
+    Color( float r, float g, float b, float a );
 
-		float get_r() const;
-		float get_g() const;
-		float get_b() const;
-		float get_a() const;
+    float get_r() const;
+    float get_g() const;
+    float get_b() const;
+    float get_a() const;
 
-		void set_r( float value );
-		void set_g( float value );
-		void set_b( float value );
-		void set_a( float value );
+    void set_r( float value );
+    void set_g( float value );
+    void set_b( float value );
+    void set_a( float value );
 
-		void set_rgb( float r, float g, float b );
-		void set_rgba( float r, float g, float b, float a );
+    void set_rgb( float r, float g, float b );
+    void set_rgba( float r, float g, float b, float a );
 
-	private:
-		float _r;
-		float _g;
-		float _b;
-		float _a;
+  private:
+    float _r;
+    float _g;
+    float _b;
+    float _a;
 };
 
 }

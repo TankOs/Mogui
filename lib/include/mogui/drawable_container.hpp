@@ -7,29 +7,29 @@
 namespace mog {
 
 class DrawableContainer {
-	public:
-		virtual ~DrawableContainer() = default;
+  public:
+    virtual ~DrawableContainer() = default;
 
-		std::size_t get_drawable_count() const;
-		std::size_t create_drawable();
-		void reset();
+    std::size_t get_drawable_count() const;
+    std::size_t create_drawable();
+    void reset();
 
-		mog::Color get_drawable_color( std::size_t index ) const;
-		void set_drawable_color( std::size_t index, mog::Color color );
+    mog::Color get_drawable_color( std::size_t index ) const;
+    void set_drawable_color( std::size_t index, mog::Color color );
 
-	protected:
-		enum class Change : uint8_t {
-			COLOR = 0
-		};
+  protected:
+    enum class Change : uint8_t {
+      COLOR = 0
+    };
 
-	private:
-		struct Drawable {
-			mog::Color color;
-		};
+  private:
+    struct Drawable {
+      mog::Color color;
+    };
 
-		virtual void on_drawable_change( std::size_t index, Change what );
+    virtual void on_drawable_change( std::size_t index, Change what );
 
-		std::vector<Drawable> _drawables;
+    std::vector<Drawable> _drawables;
 };
 
 }

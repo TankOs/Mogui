@@ -5,12 +5,12 @@
 namespace mog {
 
 class ElementSelector {
-	public:
-		void set_name( const std::string& name );
-		const std::string& get_name() const;
+  public:
+    void set_name( const std::string& name );
+    const std::string& get_name() const;
 
-	private:
-		std::string _name;
+  private:
+    std::string _name;
 };
 
 }

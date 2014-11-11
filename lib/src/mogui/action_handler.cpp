@@ -3,26 +3,26 @@
 namespace mog {
 
 ActionHandler::ActionHandler(
-	Callback callback,
-	Element& element,
-	Action action
+  Callback callback,
+  Element& element,
+  Action action
 ) :
-	_callback( callback ),
-	_element( element ),
-	_action( action )
+  _callback( callback ),
+  _element( element ),
+  _action( action )
 {
 }
 
 ActionHandler::Callback ActionHandler::get_callback() const {
-	return _callback;
+  return _callback;
 }
 
 Element& ActionHandler::get_element() const {
-	return _element;
+  return _element;
 }
 
 ActionHandler::Action ActionHandler::get_action() const {
-	return _action;
+  return _action;
 }
 
 }
